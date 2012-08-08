@@ -16,7 +16,7 @@ module OmniAuth
         end
 
         def self.locate(search_hash)
-          where(search_hash).first
+          respond_to?(:where) ? where(search_hash).first : first(:conditions => search_hash)
         end
       end
     end
